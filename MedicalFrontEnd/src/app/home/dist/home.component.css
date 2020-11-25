@@ -1,0 +1,11 @@
+.card {
+  width: 20%;
+  color: #ff0000;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
