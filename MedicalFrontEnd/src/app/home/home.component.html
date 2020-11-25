@@ -1,17 +1,21 @@
 <div class="container">
 
+    <div class="row" style="margin-bottom: 0px; font-size: 1.9vw;">
+        <h1>Administración médica</h1>
+    </div>
+
     <div class="row">
         
-        <mat-card class="card"> 
-            <img mat-card-image src="\assets\user.png">
+        <mat-card class="card" (click)="click(1)"> 
+            <img mat-card-image src="\assets\userW.png">
             <div class="title">
                 <hr>
                 <mat-card-title>Pacientes</mat-card-title>
             </div>
         </mat-card>
         
-        <mat-card class="cardM"> 
-            <img mat-card-image src="\assets\logo.png">
+        <mat-card class="cardM" (click)="click(2)"> 
+            <img mat-card-image src="\assets\logoW.png">
             <div class="title">
                 <hr>
                 <mat-card-title>Medicos</mat-card-title>
@@ -19,8 +23,8 @@
         </mat-card>
         
         
-        <mat-card class="card"> 
-            <img mat-card-image src="\assets\date.png" >
+        <mat-card class="card" (click)="click(3)"> 
+            <img mat-card-image src="\assets\dateW.png" >
             
             <div class="title">
                 <hr>
@@ -29,5 +33,9 @@
         </mat-card>
         
     </div>
-
+    
 </div>
+
+<div *ngIf="pacientes" class="row" style="margin-top: 50px;">
+    <button>asdasd</button>
+</div> 
