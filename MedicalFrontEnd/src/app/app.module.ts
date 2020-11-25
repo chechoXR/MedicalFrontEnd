@@ -10,7 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatCardModule} from '@angular/material/card';
 import { PacientesComponent } from './home/pacientes/pacientes.component';
-
+import {MatRippleModule} from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +23,8 @@ import { PacientesComponent } from './home/pacientes/pacientes.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
