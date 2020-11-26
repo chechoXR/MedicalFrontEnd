@@ -72,12 +72,8 @@ export class PacientesComponent implements AfterViewInit  {
     let resultado = this.dialog.open(DialogBorrarComponent);
     resultado.afterClosed().subscribe(res =>{
       if(res == "true"){
-        if(this.eliminarRegistro(id)==true){
-          this.showSnack("Registro eliminado.");
-        }
-        else{
-          this.showSnack("El registro no existe o ya fue eliminado.");
-        }
+        this.eliminarRegistro(id)
+          
         //Sin timeout no actualiza correctamente.
         setTimeout(t =>{
           this.load();
@@ -95,9 +91,11 @@ export class PacientesComponent implements AfterViewInit  {
     eliminar.subscribe(s =>{
       console.log("Success " + s.status);
       result = s.status == 200;
+      this.showSnack("Registro eliminado.");
     }, e=>{
       console.log("Error" + e);
       result = false;
+      this.showSnack("El registro no existe o ya fue eliminado.");
     });
     return result;
   }
