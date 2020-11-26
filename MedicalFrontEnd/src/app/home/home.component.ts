@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import { PacientesComponent } from './pacientes/pacientes.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
-  
+  styleUrls: ['./home.component.sass'],
+   
 })
 export class HomeComponent implements OnInit {
   pacientes:boolean=true;
   medicos: boolean=true;
   citas:boolean=true;
+  private urlPacientes = 'https://medical-backend-web-android.herokuapp.com/web/pacientes';
 
   constructor() { 
     this.pacientes = true;
@@ -26,7 +28,6 @@ export class HomeComponent implements OnInit {
   
   click(i:number){
   
-
   if(i == 1){
     this.pacientes = !this.pacientes;
     this.medicos = false;
@@ -45,6 +46,9 @@ export class HomeComponent implements OnInit {
     
 }  
   
+agregarPaciente(){
+  
+}
 
 }
 

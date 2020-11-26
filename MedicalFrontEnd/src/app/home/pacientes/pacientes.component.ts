@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHandler, HttpHeaders, HttpRequest} from '@angular/common/http';
+import { AfterViewInit, Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBorrarComponent } from '../dialog-borrar/dialog-borrar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTable } from '@angular/material/table';
+
 
 
 
@@ -38,40 +39,67 @@ export class PacientesComponent implements AfterViewInit  {
   displayedColumns: string[] = ['id', 'nombre', 'fechaNacimiento', 'identificacion','tipoIdentificacion','eps'];
   dataSource = [];
   expandedElement: paciente | null;
+  @ViewChild(MatTable) tabla:MatTable<paciente>;
+
   private url = 'https://medical-backend-web-android.herokuapp.com/web/pacientes';
-  
+  //private url =   'http://192.168.3.17:8080/web/pacientes';
   
   constructor(private http: HttpClient, public dialog: MatDialog, private snack: MatSnackBar) { 
     //DATA.push({id:1, nombre:"pacienteN", fechaNacimiento:new Date(),identificacion:"123",tipoIdentificacion:"cedula",eps:"Sanitas",historiaClinica:"asda"});
+    
   }
   
   ngAfterViewInit(): void {
     this.load();
   }
 
-  async load(){
+ 
+
+   load(){
+   
     const result = this.http.get<Array<paciente>>(this.url);
-    DATA = [];
+    DATA=[];
     result.subscribe((res)=>{
       res.forEach(element => {
-        console.log(element);
-        DATA.push(element);        
+        DATA.push(element);   
+        this.dataSource = DATA;
       });
     });
-    this.dataSource = DATA;
+    
   }
 
-  confirmar() {
+  confirmar(id:number) {
     let resultado = this.dialog.open(DialogBorrarComponent);
     resultado.afterClosed().subscribe(res =>{
-      if(res == "true")
-        this.showSnack("Registro eliminado");
-      
+      if(res == "true"){
+        if(this.eliminarRegistro(id)){
+          this.showSnack("Registro eliminado");
+        }
+        else{
+          this.showSnack("El registro no pudo ser eliminado");
+        }
+        this.load();
+        
+      }   
     });
+    
+  }
+
+  eliminarRegistro(id:number){
+    const eliminar = this.http.delete<Array<paciente>>(this.url+"/"+id,{ observe: 'response' });
+  
+    eliminar.subscribe(e =>{
+      if(e.status == 200)  
+        return true;
+      else 
+        return false;
+    });
+    return false;
   }
 
   showSnack(message: string){
     this.snack.open(message,"ok",{duration: 3000});
   }
+
  
 }

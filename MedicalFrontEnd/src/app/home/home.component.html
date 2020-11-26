@@ -38,7 +38,12 @@
 
 <div *ngIf="pacientes" style="margin-top: 50px;padding-bottom: 3%;">
     <hr style="margin-top: 50px; margin-left: 5%; margin-right: 5%;">
-    <h1 class="row">Pacientes</h1>
+    <div class="titulo">
+        <h1 class="row">Pacientes</h1>
+        <div class="espacio"></div>
+        <button mat-raised-button color="accent" (click)="agregarPaciente()"><mat-icon>add</mat-icon></button>
+    </div>
+    
     <hr style=" margin-left: 5%; margin-right: 5%;">
     <app-pacientes class="row"></app-pacientes>
 </div> 
