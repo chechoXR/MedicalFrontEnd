@@ -55,7 +55,7 @@ export class PacientesComponent implements AfterViewInit  {
 
  
 
-   load(){
+   async load(){
    
     const result = this.http.get<Array<paciente>>(this.url);
     DATA=[];
@@ -65,36 +65,41 @@ export class PacientesComponent implements AfterViewInit  {
         this.dataSource = DATA;
       });
     });
-    
+    return true;
   }
 
-  confirmar(id:number) {
+  async confirmar(id:number) {
     let resultado = this.dialog.open(DialogBorrarComponent);
     resultado.afterClosed().subscribe(res =>{
       if(res == "true"){
-        if(this.eliminarRegistro(id)){
-          this.showSnack("Registro eliminado");
+        if(this.eliminarRegistro(id)==true){
+          this.showSnack("Registro eliminado.");
         }
         else{
-          this.showSnack("El registro no pudo ser eliminado");
+          this.showSnack("El registro no existe o ya fue eliminado.");
         }
-        this.load();
+        //Sin timeout no actualiza correctamente.
+        setTimeout(t =>{
+          this.load();
+        },600);
         
       }   
     });
     
   }
 
-  eliminarRegistro(id:number){
-    const eliminar = this.http.delete<Array<paciente>>(this.url+"/"+id,{ observe: 'response' });
+   eliminarRegistro(id:number){
+    const eliminar = this.http.delete(this.url+"/"+id,{ observe: 'response' });
   
-    eliminar.subscribe(e =>{
-      if(e.status == 200)  
-        return true;
-      else 
-        return false;
+    let result = false;
+    eliminar.subscribe(s =>{
+      console.log("Success " + s.status);
+      result = s.status == 200;
+    }, e=>{
+      console.log("Error" + e);
+      result = false;
     });
-    return false;
+    return result;
   }
 
   showSnack(message: string){
