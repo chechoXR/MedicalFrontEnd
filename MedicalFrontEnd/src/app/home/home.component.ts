@@ -8,28 +8,41 @@ import { Component, OnInit } from '@angular/core';
   
 })
 export class HomeComponent implements OnInit {
-  pacientes:boolean;
-  medicos: boolean;
-  citas:boolean;
+  pacientes:boolean=true;
+  medicos: boolean=true;
+  citas:boolean=true;
 
   constructor() { 
+    this.pacientes = true;
+    this.medicos = true;
+    this.citas = true ;
+  }
+
+  ngOnInit(): void {
     this.pacientes = false;
     this.medicos = false;
     this.citas = false;
   }
-
-  ngOnInit(): void {
-  }
   
-  click(i:any){
-  console.log("asd ",i);
+  click(i:number){
+  
 
-  if(i == 1)
+  if(i == 1){
     this.pacientes = !this.pacientes;
-  if(i == 2)
+    this.medicos = false;
+    this.citas = false;
+  }
+  if(i == 2){
+    this.pacientes = false;
     this.medicos = !this.medicos;
-  if(i == 1)
+    this.citas = false;
+  }
+  if(i == 3){
+    this.pacientes = false;
+    this.medicos = false;  
     this.citas = !this.citas;
+  }
+    
 }  
   
 
