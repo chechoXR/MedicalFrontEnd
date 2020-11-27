@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { PacientesComponent } from './pacientes/pacientes.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -14,7 +17,7 @@ export class HomeComponent implements OnInit {
   citas:boolean=true;
   private urlPacientes = 'https://medical-backend-web-android.herokuapp.com/web/pacientes';
 
-  constructor() { 
+  constructor(private dialog: MatDialog, private router:Router) { 
     this.pacientes = true;
     this.medicos = true;
     this.citas = true ;
@@ -47,7 +50,7 @@ export class HomeComponent implements OnInit {
 }  
   
 agregarPaciente(){
-  
+  this.router.navigateByUrl('/paciente');
 }
 
 }

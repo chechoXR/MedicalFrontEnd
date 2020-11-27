@@ -16,8 +16,15 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 import { DialogBorrarComponent } from './home/dialog-borrar/dialog-borrar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +32,8 @@ import { DialogBorrarComponent } from './home/dialog-borrar/dialog-borrar.compon
     HomeComponent,
     ToolbarComponent,
     PacientesComponent,
-    DialogBorrarComponent
+    DialogBorrarComponent,
+    AgregarPacienteComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,25 @@ import { DialogBorrarComponent } from './home/dialog-borrar/dialog-borrar.compon
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {
+        path:"home",
+        component: HomeComponent
+      },
+      {
+        path:"paciente",
+        component: AgregarPacienteComponent
+      },
+      {
+       path: '',
+       redirectTo: '/home',
+       pathMatch: 'full'
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
