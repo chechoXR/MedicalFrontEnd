@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
+
 
 @Component({
   selector: 'app-agregar-paciente',
@@ -9,7 +12,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class AgregarPacienteComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   
-  constructor() {}
+  constructor(private router:Router) {}
 
 
 
