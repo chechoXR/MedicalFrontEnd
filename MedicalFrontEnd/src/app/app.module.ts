@@ -11,12 +11,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {ToolbarComponent } from './toolbar/toolbar.component';
 import {MatCardModule} from '@angular/material/card';
 import {PacientesComponent } from './home/pacientes/pacientes.component';
-import {MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
@@ -48,8 +50,11 @@ import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.co
     MatDialogModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    MatDatepickerModule,
     AppRoutingModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     RouterModule.forRoot([
       {
         path:"home",
@@ -66,7 +71,9 @@ import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.co
       }
     ])
   ],
-  providers: [],
+  providers: [
+    {provide:MAT_DATE_LOCALE, useValue:'sp-CO'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

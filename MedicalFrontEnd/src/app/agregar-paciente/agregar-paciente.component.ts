@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-agregar-paciente',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agregar-paciente.component.sass']
 })
 export class AgregarPacienteComponent implements OnInit {
+  email = new FormControl('', [Validators.required, Validators.email]);
+  
+  constructor() {}
 
-  constructor() { }
+
+
 
   ngOnInit(): void {
+    
   }
+  
+
 
 }

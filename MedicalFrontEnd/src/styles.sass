@@ -1,2 +1,113 @@
+@import '~@angular/material/theming'
+@import 'custom-theme.scss'
 
- 
+$primary: mat-color($MedicalFrontEnd-primary)
+$accent: mat-color($MedicalFrontEnd-accent)
+$warn: mat-color($MedicalFrontEnd-warn)
+$white: #ffffff
+
+
+
+
+// mat-icon-stepper selected color change 
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit 
+    background-color: $accent!important
+
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline 
+    color: $white!important
+    // opacity: 1!important
+
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick 
+    color: $accent !important
+
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick
+    color: $warn
+    opacity: 0.8
+
+
+// mat-input carent color
+::ng-deep .mat-input-element 
+    caret-color: $accent!important
+
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element 
+    caret-color: $warn
+
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label 
+    color: $white
+
+// mat-label disabled
+::ng-deep .mat-form-field.mat-form-field-disabled .mat-form-field-label 
+    color: $white !important
+
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label 
+    color: $accent    !important
+
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label 
+    color: $warn !important
+
+
+//Icon
+// mat-icon normal state style
+::ng-deep .mat-icon 
+    color: $white
+
+// mat-form-field focused -> icon color changed
+::ng-deep .mat-form-field.mat-focused .mat-icon
+    color: $accent    !important
+
+// mat-icon error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-icon 
+    color: $warn !important
+
+
+//___________________
+
+// mat-form-field normal
+::ng-deep .mat-form-field
+    color: $white
+    margin-left: 15px
+
+//::ng-deep .mat-input-element:disabled .mat-form-field
+  // color: green
+    
+// mat-form-field focused -> text color changed
+::ng-deep .mat-form-field.mat-focused
+    color: $accent
+    
+::ng-deep .mat-form-field.mat-focused ::placeholder
+    color: $accent  
+
+
+::ng-deep .mat-form-field.mat-form-field-invalid
+    color: $warn
+
+//select icon
+::ng-deep .mat-select-arrow
+    color: $white
+
+//selection panel text color
+::ng-deep .mat-select-panel .mat-optgroup-label,.mat-option
+    color: $accent
+
+//selected option
+::ng-deep .mat-select-value
+    color: $white
+
+//Seleced option focused
+::ng-deep .mat-form-field.mat-focused .mat-select-value
+    color: $accent
+

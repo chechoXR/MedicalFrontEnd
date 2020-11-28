@@ -1,1 +1,60 @@
 <h1>Nuevo paciente</h1>
+<div class="center">
+<form class="form">
+    <div class="row" style="justify-content: start;">
+        <mat-form-field appearance="outline" >
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre completo" autocomplete="off">
+            <mat-error>MAL!</mat-error>
+            <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>  
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" autocomplete="off">
+            <mat-datepicker-toggle matSuffix [for]="picker"><mat-icon matDatepickerToggleIcon>today</mat-icon></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+
+    <div class="row" style="justify-content: start;">
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de identificación</mat-label>
+            <mat-select>
+              <mat-option value="option1">Option1</mat-option>
+              <mat-option value="option2">Option2</mat-option>
+              <mat-option value="option3">Option3</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Identificación</mat-label>
+            <input matInput placeholder="Número Id" autocomplete="off" class="number" autocomplete="off">
+            <mat-icon matSuffix>perm_identity</mat-icon>
+        </mat-form-field>
+    </div>
+
+
+    <div class="row" style="justify-content: start;">
+        <mat-form-field appearance="outline">
+            <mat-label>EPS</mat-label>
+            <mat-select>
+              <mat-option value="option1">Option1</mat-option>
+              <mat-option value="option2">Option2</mat-option>
+              <mat-option value="option3">Option3</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Historia clinica</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </div>
+
+  
+
+</form>
+</div>
