@@ -46,10 +46,10 @@ function slideTo(direction:string){
     group([
         query(':leave',[
             animate('300ms ease', style({ [direction]: '100%'}))
-        ]),
+        ],optional),
         query(':enter',[
             animate('300ms ease', style({ [direction]: '0%'}))
-        ])
+        ],optional)
     ])
     ];
 

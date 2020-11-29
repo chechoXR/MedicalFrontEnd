@@ -20,7 +20,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import {LayoutModule} from '@angular/cdk/layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { DialogBorrarComponent } from './home/dialog-borrar/dialog-borrar.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -55,6 +56,8 @@ import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.co
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    LayoutModule,
+    FlexLayoutModule,
     RouterModule.forRoot([
       {
         path:"home",

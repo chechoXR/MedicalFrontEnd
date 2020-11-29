@@ -1,15 +1,15 @@
-<h1>Nuevo paciente</h1>
-<div class="center">
-<form class="form">
+<div fxLayout="column" fxLayoutAlign="space-around center" >
+    <h1>Nuevo paciente</h1>
 
-    <div class="row" style="justify-content: start;">
-        <mat-form-field appearance="outline">
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
             <mat-label>Nombre</mat-label>
             <input matInput placeholder="Nombre completo" autocomplete="off" id="nombre">
             <mat-icon matSuffix>face</mat-icon>
         </mat-form-field>  
         
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="formField">
             <mat-label>Fecha de nacimiento</mat-label>
             <input matInput [matDatepicker]="picker" autocomplete="off" id="fecha" readonly>
             <mat-datepicker-toggle matSuffix [for]="picker"><mat-icon matDatepickerToggleIcon>today</mat-icon></mat-datepicker-toggle>
@@ -18,15 +18,15 @@
 
     </div>
 
-    <div class="row" style="justify-content: start;">
-        <mat-form-field appearance="outline">
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
             <mat-label>Tipo de identificación</mat-label>
             <mat-select id="tipoID" [(value)]='tipoSel'>
                 <mat-option *ngFor="let tipo of tiposID" [value]="tipo.id"> {{ tipo.tipoIdentificacion }}</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="formField">
             <mat-label>Identificación</mat-label>
             <input matInput placeholder="Número Id" autocomplete="off" class="number" autocomplete="off" id="id">
             <mat-icon matSuffix>perm_identity</mat-icon>
@@ -34,8 +34,8 @@
     </div>
 
 
-    <div class="row" style="justify-content: start;">
-        <mat-form-field appearance="outline">
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
             <mat-label>EPS</mat-label>
             <mat-select id="eps" [(value)]='epsSel'>
                 <mat-option *ngFor="let e of eps" [value]="e.id"> {{ e.eps }}</mat-option>
@@ -43,23 +43,24 @@
         </mat-form-field>
     </div>
 
-    <div class="row">
-        <mat-form-field class="full-width" appearance="outline">
+    
+
+    <div fxLayout="row">
+        <mat-form-field appearance="outline" class="formField">
             <mat-label>Historia clinica</mat-label>
             <textarea matInput id="historia"></textarea>
         </mat-form-field>
+        
     </div>
     
-    <div class="row" *ngIf="errorVisible"> <h2 class="row">Error, revisa los campos e intenta nuevamente</h2></div>
     
-    <div class="row">
-        
-        <button type="button" class="full-width" mat-raised-button color="accent" (click)="guardar()" >
+    <div fxLayout="row" *ngIf="errorVisible"> <h2 class="row">Error, revisa los campos e intenta nuevamente</h2></div>
+  
+    <div fxLayout="row" >
+        <button type="button" class="formField" mat-raised-button color="accent" (click)="guardar()" >
             <mat-icon>save</mat-icon>
         </button>
 
     </div>
-  
 
-</form>
 </div>
