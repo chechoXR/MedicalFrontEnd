@@ -1,11 +1,11 @@
 <h1>Nuevo paciente</h1>
 <div class="center">
 <form class="form">
+
     <div class="row" style="justify-content: start;">
-        <mat-form-field appearance="outline" >
+        <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
             <input matInput placeholder="Nombre completo" autocomplete="off" id="nombre">
-            <mat-error>MAL!</mat-error>
             <mat-icon matSuffix>face</mat-icon>
         </mat-form-field>  
         
@@ -21,8 +21,8 @@
     <div class="row" style="justify-content: start;">
         <mat-form-field appearance="outline">
             <mat-label>Tipo de identificación</mat-label>
-            <mat-select id="tipoID">
-                <mat-option *ngFor="let tipo of tiposID" [value]="tipo"> {{ tipo }}</mat-option>
+            <mat-select id="tipoID" [(value)]='tipoSel'>
+                <mat-option *ngFor="let tipo of tiposID" [value]="tipo.id"> {{ tipo.tipoIdentificacion }}</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -37,8 +37,8 @@
     <div class="row" style="justify-content: start;">
         <mat-form-field appearance="outline">
             <mat-label>EPS</mat-label>
-            <mat-select id="eps">
-                <mat-option *ngFor="let e of eps" [value]="e"> {{ e }}</mat-option>
+            <mat-select id="eps" [(value)]='epsSel'>
+                <mat-option *ngFor="let e of eps" [value]="e.id"> {{ e.eps }}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -49,7 +49,9 @@
             <textarea matInput id="historia"></textarea>
         </mat-form-field>
     </div>
-
+    
+    <div class="row" *ngIf="errorVisible"> <h2 class="row">Error, revisa los campos e intenta nuevamente</h2></div>
+    
     <div class="row">
         
         <button type="button" class="full-width" mat-raised-button color="accent" (click)="guardar()" >
