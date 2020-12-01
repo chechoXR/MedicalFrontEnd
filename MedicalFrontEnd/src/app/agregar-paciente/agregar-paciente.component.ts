@@ -92,9 +92,22 @@ export class AgregarPacienteComponent implements AfterViewInit {
     console.log(historia.value);
   */  
     if(nombre.value != "" && fechaNacimiento.value != "" && this.tipoSel != undefined && id.value !="" && this.epsSel != undefined && historia.value != "") {
-      const fec = new Date(fechaNacimiento.value);
-      //console.log("fec "+fec.toISOString());
+      console.log("fec "+fechaNacimiento.value);
+      const fec = new Date();
+      var fechaValores = fechaNacimiento.value.split("/",3);
+      var temp: number=+fechaValores[0];
+      fec.setDate(temp);
+      
+      var temp: number=+fechaValores[1];
+      fec.setMonth(temp-1);
 
+      var temp: number=+fechaValores[2];
+      fec.setFullYear(temp);
+
+      fec.setUTCHours(0,0,0,0);
+      //console.log("fec "+this.tipoSel);
+
+      
       
       const result = this.http.post(this.url+"/web/pacientes",{
         "nombre": nombre.value,

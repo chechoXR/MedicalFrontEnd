@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -27,7 +28,9 @@ import { DialogBorrarComponent } from './home/dialog-borrar/dialog-borrar.compon
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.component';
-
+import { EditarPacienteComponent } from './editar-paciente/editar-paciente.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.co
     ToolbarComponent,
     PacientesComponent,
     DialogBorrarComponent,
-    AgregarPacienteComponent
+    AgregarPacienteComponent,
+    EditarPacienteComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,7 @@ import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.co
     MatNativeDateModule,
     LayoutModule,
     FlexLayoutModule,
+    FormsModule,
     RouterModule.forRoot([
       {
         path:"home",

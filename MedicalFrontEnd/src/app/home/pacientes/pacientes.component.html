@@ -45,7 +45,7 @@
                 <h1>Historia Clinica</h1>
                 <div class="espacio"></div>
                 <div class="acciones">
-                  <button mat-raised-button color="accent" ><mat-icon>edit</mat-icon></button>
+                  <button mat-raised-button color="accent" (click)="editar(element.id)"><mat-icon>edit</mat-icon></button>
                   <button mat-raised-button color="warn" style="margin-left: 0.5vw;" (click)="confirmar(element.id)"><mat-icon>delete</mat-icon></button>
                 </div>
               </div>

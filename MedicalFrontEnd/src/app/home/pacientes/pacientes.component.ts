@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogBorrarComponent } from '../dialog-borrar/dialog-borrar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 
 
@@ -44,7 +45,7 @@ export class PacientesComponent implements AfterViewInit  {
   private url = 'https://medical-backend-web-android.herokuapp.com/web/pacientes';
   //private url =   'http://192.168.3.17:8080/web/pacientes';
   
-  constructor(private http: HttpClient, public dialog: MatDialog, private snack: MatSnackBar) { 
+  constructor(private http: HttpClient, public dialog: MatDialog, private snack: MatSnackBar, private router:Router) { 
     //DATA.push({id:1, nombre:"pacienteN", fechaNacimiento:new Date(),identificacion:"123",tipoIdentificacion:"cedula",eps:"Sanitas",historiaClinica:"asda"});
     
   }
@@ -62,10 +63,15 @@ export class PacientesComponent implements AfterViewInit  {
     result.subscribe((res)=>{
       res.forEach(element => {
         DATA.push(element);   
+        DATA.sort((a,b)=>(a.id>b.id)?1:-1);
         this.dataSource = DATA;
       });
     });
     return true;
+  }
+
+  editar(id:number){
+    this.router.navigate(["editpaciente",id]);
   }
 
   async confirmar(id:number) {
