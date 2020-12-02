@@ -12,7 +12,7 @@ export interface medico{
   identificacion:String;
   tipoIdentificacion:String;
   numeroTarjetaProfesional:String;
-  experiencia:number;
+  aniosExperiencia:number;
   especialidad:String;
   inicio:String;
   fin: String;
@@ -64,6 +64,7 @@ export class MedicosComponent implements OnInit {
     result.subscribe((res)=>{
       res.forEach(element => {
         DATA.push(element);   
+        console.log(element.aniosExperiencia)
         DATA.sort((a,b)=>(a.id>b.id)?1:-1);
         this.dataSource = DATA;
       });
