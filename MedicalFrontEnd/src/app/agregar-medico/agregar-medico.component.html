@@ -1,1 +1,77 @@
-<p>agregar-medico works!</p>
+<div fxLayout="column" fxLayoutAlign="space-around center" >
+    <h1>Nuevo médico</h1>
+
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre completo" autocomplete="off" id="nombre">
+            <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>  
+        
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Especialidad</mat-label>
+            <input matInput placeholder="Especialidad" autocomplete="off" id="especialidad">
+            <mat-icon matSuffix>grade</mat-icon>
+        </mat-form-field> 
+      
+
+    </div>
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Tipo de identificación</mat-label>
+            <mat-select id="tipoID" [(value)]='tipoSel'>
+                <mat-option *ngFor="let tipo of tiposID" [value]="tipo.id"> {{ tipo.tipoIdentificacion }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Identificación</mat-label>
+            <input matInput placeholder="Número Id" autocomplete="off" class="number" autocomplete="off" id="id">
+            <mat-icon matSuffix>perm_identity</mat-icon>
+        </mat-form-field>
+    </div>
+
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Número tarjeta profesional</mat-label>
+            <input matInput placeholder="Número de tarjeta profesional" autocomplete="off" id="tarjeta">
+            <mat-icon matSuffix>payments</mat-icon>
+        </mat-form-field>  
+
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Años de experiencia</mat-label>
+            <input matInput placeholder="Experiencia" autocomplete="off" id="experiencia" type="number" min="0">
+            <mat-icon matSuffix>query_builder</mat-icon>
+        </mat-form-field>  
+    </div>
+
+    
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Hora de inicio</mat-label>
+            <input matInput placeholder="Inicio" autocomplete="off" id="inicio" type="number" min="0" max="23">
+            <mat-icon matSuffix>hourglass_top</mat-icon>
+        </mat-form-field>  
+
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Hora de fin</mat-label>
+            <input matInput placeholder="Fin" autocomplete="off" id="fin" type="number" min="0" max="23">
+            <mat-icon matSuffix>hourglass_bottom</mat-icon>
+        </mat-form-field> 
+    </div>
+    
+    
+    <div fxLayout="row" *ngIf="errorVisible"> <h2 class="row">Error, revisa los campos e intenta nuevamente</h2></div>
+  
+    <div fxLayout="row" >
+        <button type="button" class="formField" mat-raised-button color="accent" (click)="guardar()" >
+            <mat-icon>save</mat-icon>
+        </button>
+
+    </div>
+
+</div>
