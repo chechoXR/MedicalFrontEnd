@@ -53,5 +53,9 @@ agregarPaciente(){
   this.router.navigateByUrl('/paciente');
 }
 
+agregarMedico(){
+  this.router.navigateByUrl('/medico');
+}
+
 }
 

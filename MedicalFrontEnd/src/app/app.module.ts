@@ -31,6 +31,8 @@ import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.co
 import { EditarPacienteComponent } from './editar-paciente/editar-paciente.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
+import { MedicosComponent } from './home/medicos/medicos.component';
+import { AgregarMedicoComponent } from './agregar-medico/agregar-medico.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { FormsModule } from '@angular/forms';
     DialogBorrarComponent,
     AgregarPacienteComponent,
     EditarPacienteComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MedicosComponent,
+    AgregarMedicoComponent
   ],
   imports: [
     BrowserModule,
