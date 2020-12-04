@@ -6,6 +6,7 @@ import { AgregarPacienteComponent } from './agregar-paciente/agregar-paciente.co
 import { EditarPacienteComponent } from './editar-paciente/editar-paciente.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AgregarMedicoComponent } from './agregar-medico/agregar-medico.component';
+import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 
 const routes:Routes =[
   {path: '', component: HomeComponent},
@@ -13,6 +14,7 @@ const routes:Routes =[
   {path: 'paciente', component: AgregarPacienteComponent,data:{animation:'isRight'}},
   {path: 'medico', component: AgregarMedicoComponent,data:{animation:'isRight'}},
   {path: 'editpaciente/:id', component: EditarPacienteComponent,data:{animation:'isRight'}},
+  {path: 'editmedico/:id', component: EditarMedicoComponent,data:{animation:'isRight'}},
   {path: 'notFound', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
 

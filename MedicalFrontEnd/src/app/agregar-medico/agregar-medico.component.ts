@@ -61,6 +61,9 @@ export class AgregarMedicoComponent implements AfterViewInit {
         inicio.value != "" &&
         fin.value != ""){
 
+          let n :number = Number(experiencia.value);
+          n=n+0.0;
+          console.log(n);
 
           const result = this.http.post(this.url+"/web/medicos",{
             
@@ -68,7 +71,7 @@ export class AgregarMedicoComponent implements AfterViewInit {
             "identificacion":id.value, 
             "tipoIdentificacion":this.tipoSel,
             "numeroTarjetaProfesional":tarjeta.value,
-            "experiencia":experiencia.value,
+            "aniosExperiencia":n,
             "especialidad":especialidad.value,
             "inicio":inicio.value,
             "fin":fin.value         

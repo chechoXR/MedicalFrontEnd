@@ -76,20 +76,11 @@ export class EditarPacienteComponent implements OnInit,AfterViewInit {
       this.paciente = res.body; 
       this.setValues();
       resp = true;  
-    });
-
-    
-    /*
-    
-    result.subscribe(res=>{
-      
-      
     },e=>{
       this.router.navigateByUrl("notFound");
     });
-  */
 
-  
+      
 
   }
   

@@ -33,6 +33,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { MedicosComponent } from './home/medicos/medicos.component';
 import { AgregarMedicoComponent } from './agregar-medico/agregar-medico.component';
+import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AgregarMedicoComponent } from './agregar-medico/agregar-medico.componen
     EditarPacienteComponent,
     NotFoundComponent,
     MedicosComponent,
-    AgregarMedicoComponent
+    AgregarMedicoComponent,
+    EditarMedicoComponent
   ],
   imports: [
     BrowserModule,

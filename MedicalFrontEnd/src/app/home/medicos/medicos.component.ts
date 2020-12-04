@@ -64,7 +64,6 @@ export class MedicosComponent implements OnInit {
     result.subscribe((res)=>{
       res.forEach(element => {
         DATA.push(element);   
-        console.log(element.aniosExperiencia)
         DATA.sort((a,b)=>(a.id>b.id)?1:-1);
         this.dataSource = DATA;
       });
