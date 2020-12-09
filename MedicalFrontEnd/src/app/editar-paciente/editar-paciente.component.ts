@@ -49,7 +49,7 @@ export class EditarPacienteComponent implements OnInit,AfterViewInit {
   constructor(private route: ActivatedRoute, private http:HttpClient, private router:Router) { 
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
+      this.id = +params['id'];
     });
     
     
