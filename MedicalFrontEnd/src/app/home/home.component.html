@@ -59,3 +59,15 @@
     <hr style=" margin-left: 5%; margin-right: 5%;">
     <app-medicos class="row"></app-medicos>
 </div> 
+
+<div *ngIf="citas" style="margin-top: 50px;padding-bottom: 3%;">
+    <hr style="margin-top: 50px; margin-left: 5%; margin-right: 5%;">
+    <div class="titulo">
+        <h1 class="row">Citas</h1>
+        <div class="espacio"></div>
+        <button mat-raised-button color="accent" (click)="agregarCita()"><mat-icon>add</mat-icon></button>
+    </div>
+    
+    <hr style=" margin-left: 5%; margin-right: 5%;">
+    <app-citas class="row"></app-citas>
+</div> 
