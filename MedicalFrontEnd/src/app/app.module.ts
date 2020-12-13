@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -35,6 +35,7 @@ import { MedicosComponent } from './home/medicos/medicos.component';
 import { AgregarMedicoComponent } from './agregar-medico/agregar-medico.component';
 import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 import { CitasComponent } from './home/citas/citas.component';
+import { AgregarCitaComponent } from './agregar-cita/agregar-cita.component';
 
 @NgModule({
   declarations: [
@@ -49,12 +50,14 @@ import { CitasComponent } from './home/citas/citas.component';
     MedicosComponent,
     AgregarMedicoComponent,
     EditarMedicoComponent,
-    CitasComponent
+    CitasComponent,
+    AgregarCitaComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxMaterialTimepickerModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,

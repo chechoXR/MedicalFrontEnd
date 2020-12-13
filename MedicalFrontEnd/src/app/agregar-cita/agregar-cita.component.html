@@ -1,0 +1,50 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" >
+    <h1>Nueva cita</h1>
+
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Paciente</mat-label>
+            <mat-select id="paciente" [(ngModel)]='pacienteSel'>
+                <mat-option *ngFor="let paciente of pacientes" [value]="paciente.id"> {{ paciente.nombre }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+
+    
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Médico</mat-label>
+            <mat-select id="medico" [(ngModel)]='medicoSel'>
+                <mat-option *ngFor="let medico of medicos" [value]="medico.id"> {{ medico.nombre }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Día de la cita</mat-label>
+            <input matInput [matDatepicker]="picker" autocomplete="off" id="diaInicio" readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"><mat-icon matDatepickerToggleIcon>today</mat-icon></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="formField">
+            <mat-label>Hora de inicio</mat-label>
+            <input matInput [ngxTimepicker]="pickerr" autocomplete="off" id="horaInicio" readonly>
+            <mat-icon matSuffix matDatepickerToggleIcon>alarm</mat-icon>
+            <ngx-material-timepicker #pickerr></ngx-material-timepicker>
+        </mat-form-field>
+    </div>
+
+
+    
+    <div fxLayout="row" *ngIf="errorVisible"> <h2 class="row">Error, revisa los campos e intenta nuevamente</h2></div>
+  
+    <div fxLayout="row" >
+        <button type="button" class="formField" mat-raised-button color="accent" (click)="guardar()" >
+            <mat-icon>save</mat-icon>
+        </button>
+
+    </div>
+
+</div>

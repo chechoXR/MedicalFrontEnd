@@ -58,7 +58,7 @@ agregarMedico(){
 }
 
 agregarCita(){
-  //this.router.navigateByUrl('/cita');
+  this.router.navigateByUrl('/cita');
 }
 
 }

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
+
 export interface cita{
   id:number;
   pacienteId:string;
   medicoId:string;
-  inicio:Date;
-  fin:Date;
+  inicio:string;
+  fin:string;
 }
 var DATA: cita[]=[];
 @Component({
@@ -22,6 +23,7 @@ export class CitasComponent implements OnInit {
 
   ngOnInit(): void {
     this.load();
+    
   }
 
   async load(){
@@ -30,8 +32,14 @@ export class CitasComponent implements OnInit {
     DATA=[];
     result.subscribe((res)=>{
       res.forEach(element => {
+        let fechaInicio = new Date(element.inicio);
+        let fechaFin = new Date(element.fin);
+        //console.log(date.toISOString());
+        element.inicio = fechaInicio.toUTCString();
+        element.fin = fechaFin.toUTCString();
+        //console.log(element.inicio)
         DATA.push(element);   
-        DATA.sort((a,b)=>(a.inicio>b.inicio)?1:-1);
+        DATA.sort((a,b)=>(a.id>b.id)?1:-1);
         this.dataSource = DATA;
       });
     });

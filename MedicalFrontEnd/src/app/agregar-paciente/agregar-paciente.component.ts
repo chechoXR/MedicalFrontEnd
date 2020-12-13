@@ -6,24 +6,24 @@ import { Router } from '@angular/router';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { MatDialog } from '@angular/material/dialog';
 
-export interface paciente{
-  id:number,
-  nombre:String,
-  fechaNacimiento:Date,
-  identificacion:String,
-  tipoIdentificacion:String,
+export interface paciente {
+  id: number,
+  nombre: String,
+  fechaNacimiento: Date,
+  identificacion: String,
+  tipoIdentificacion: String,
   historiaClinica: String
-  eps:String
+  eps: String
 }
 
-export interface tipoID{
-  id:number,
-  tipoIdentificacion:String
+export interface tipoID {
+  id: number,
+  tipoIdentificacion: String
 }
 
-export interface eps{
-  id:number,
-  eps:String
+export interface eps {
+  id: number,
+  eps: String
 }
 
 
@@ -33,97 +33,97 @@ export interface eps{
   styleUrls: ['./agregar-paciente.component.sass']
 })
 export class AgregarPacienteComponent implements AfterViewInit {
-  
+
 
   tipoSel;
   epsSel;
   errorVisible = false;
-  tiposID=[];
+  tiposID = [];
   eps = [];
 
   private url = 'https://medical-backend-web-android.herokuapp.com';
-  
 
-  constructor(private router:Router, private http:HttpClient, private dialog:MatDialog) {}
+
+  constructor(private router: Router, private http: HttpClient, private dialog: MatDialog) { }
 
   ngAfterViewInit(): void {
     this.cargarTiposID();
     this.cargarEps();
   }
-  
 
-  async cargarTiposID(){
-   
-    const result = this.http.get<Array<tipoID>>(this.url+"/tipoIdentificacion");
+
+  async cargarTiposID() {
+
+    const result = this.http.get<Array<tipoID>>(this.url + "/tipoIdentificacion");
     this.tiposID = [];
-    result.subscribe((res)=>{
+    result.subscribe((res) => {
       res.forEach(element => {
-        this.tiposID.push(element);   
+        this.tiposID.push(element);
       });
     });
     return true;
   }
 
-  async cargarEps(){
-   
-    const result = this.http.get<Array<eps>>(this.url+"/eps");
+  async cargarEps() {
+
+    const result = this.http.get<Array<eps>>(this.url + "/eps");
     this.eps = [];
-    result.subscribe((res)=>{
+    result.subscribe((res) => {
       res.forEach(element => {
-        this.eps.push(element);   
+        this.eps.push(element);
       });
     });
     return true;
   }
 
-  async guardar(){
+  async guardar() {
     var nombre = document.getElementById("nombre") as HTMLInputElement;
     var fechaNacimiento = document.getElementById("fecha") as HTMLInputElement;
     var tipoID = document.getElementById("tipoID") as HTMLSelectElement;
     var id = document.getElementById("id") as HTMLInputElement;
     var eps = document.getElementById("eps") as HTMLSelectElement;
     var historia = document.getElementById("historia") as HTMLInputElement;
-/*
-    console.log(nombre.value);
-    console.log(fechaNacimiento.value);
-    console.log(this.tipoSel);
-    console.log(id.value);
-    console.log(this.epsSel);
-    console.log(historia.value);
-  */  
-    if(nombre.value != "" && fechaNacimiento.value != "" && this.tipoSel != undefined && id.value !="" && this.epsSel != undefined && historia.value != "") {
-      console.log("fec "+fechaNacimiento.value);
+    /*
+        console.log(nombre.value);
+        console.log(fechaNacimiento.value);
+        console.log(this.tipoSel);
+        console.log(id.value);
+        console.log(this.epsSel);
+        console.log(historia.value);
+      */
+    if (nombre.value != "" && fechaNacimiento.value != "" && this.tipoSel != undefined && id.value != "" && this.epsSel != undefined && historia.value != "") {
+      console.log("fec " + fechaNacimiento.value);
       const fec = new Date();
-      var fechaValores = fechaNacimiento.value.split("/",3);
-      var temp: number=+fechaValores[0];
+      var fechaValores = fechaNacimiento.value.split("/", 3);
+      var temp: number = +fechaValores[0];
       fec.setDate(temp);
-      
-      var temp: number=+fechaValores[1];
-      fec.setMonth(temp-1);
 
-      var temp: number=+fechaValores[2];
+      var temp: number = +fechaValores[1];
+      fec.setMonth(temp - 1);
+
+      var temp: number = +fechaValores[2];
       fec.setFullYear(temp);
 
-      fec.setUTCHours(0,0,0,0);
+      fec.setUTCHours(0, 0, 0, 0);
       //console.log("fec "+this.tipoSel);
 
-      
-      
-      const result = this.http.post(this.url+"/web/pacientes",{
+
+
+      const result = this.http.post(this.url + "/web/pacientes", {
         "nombre": nombre.value,
         "fechaNacimiento": fec.toISOString(),
         "identificacion": id.value,
         "tipoIdentificacion": this.tipoSel,
-        "eps":this.epsSel,
-        "historiaClinica":historia.value
+        "eps": this.epsSel,
+        "historiaClinica": historia.value
       });
 
-      result.subscribe((res)=>{
+      result.subscribe((res) => {
         this.router.navigateByUrl("");
       });
-      
-      
-    }else{
+
+
+    } else {
       this.errorVisible = true;
     }
 

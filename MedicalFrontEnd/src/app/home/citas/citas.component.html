@@ -19,12 +19,12 @@
     
     <ng-container matColumnDef="inicio">
         <th mat-header-cell *matHeaderCellDef> Inicio </th>
-        <td mat-cell *matCellDef="let cita"> {{cita.inicio | date :  "dd/MM/yyyy hh:mm"}} </td>
+        <td mat-cell *matCellDef="let cita"> {{cita.inicio | date : "dd/MM/yyyy hh:mm a" :"UTC"}} </td>
     </ng-container>
 
     <ng-container matColumnDef="fin">
         <th mat-header-cell *matHeaderCellDef> Fin </th>
-        <td mat-cell *matCellDef="let cita"> {{cita.fin | date :  "dd/MM/yyyy hh:mm"}} </td>
+        <td mat-cell *matCellDef="let cita"> {{cita.fin | date : "dd/MM/yyyy hh:mm a" :"UTC"}} </td>
     </ng-container>
 
 
